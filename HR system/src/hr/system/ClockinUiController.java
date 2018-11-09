@@ -66,12 +66,21 @@ public class ClockinUiController implements Initializable {
 
     @FXML
     void ClicktoClockin(ActionEvent event) throws IOException {
-           Parent root = FXMLLoader.load(getClass().getResource("Clockinsuccess.fxml"));
+        
+           Parent root = FXMLLoader.load(getClass().getResource("CLKinSuccess.fxml"));
            Scene root_scene = new Scene(root);
            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            app_stage.hide();
            app_stage.setScene(root_scene);
            app_stage.show();
+           
+           /*clockinfailed not match with schedule
+           Parent root = FXMLLoader.load(getClass().getResource("Clockinfailed.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();*/
     }
 
     @FXML

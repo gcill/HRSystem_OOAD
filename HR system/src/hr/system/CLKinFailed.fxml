@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="259.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.CLKinFailedController">
+   <children>
+      <Text layoutX="156.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clock in Failed!">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#000000ba" layoutX="142.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are not in schedule">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="Authenbtn" layoutX="124.0" layoutY="173.0" mnemonicParsing="false" onAction="#ClickAuthorized" prefHeight="36.0" prefWidth="108.0" text="Authorized" />
+      <Button fx:id="Cancelbtn" layoutX="246.0" layoutY="173.0" mnemonicParsing="false" onAction="#ClickCancel" prefHeight="36.0" prefWidth="108.0" text="Cancel" />
+   </children>
+</Pane>

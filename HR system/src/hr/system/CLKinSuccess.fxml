@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ClockinsuccessController">
+   <children>
+      <Text layoutX="123.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clock in Successful">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="Date" layoutX="135.0" layoutY="105.0" prefHeight="28.0" prefWidth="199.0" text="Label">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="OKbtn" layoutX="189.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClockOK" prefHeight="32.0" prefWidth="67.0" text="OK" />
+   </children>
+</Pane>
