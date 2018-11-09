@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ClockinUiController">
+   <children>
+      <Button fx:id="Clockinbtn" layoutX="286.0" layoutY="568.0" mnemonicParsing="false" onAction="#ClicktoClockin" text="Clockin">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="Approvebtn" layoutX="423.0" layoutY="568.0" mnemonicParsing="false" onAction="#ClicktoApprove" text="Approve work">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="Date" layoutX="602.0" layoutY="44.0" prefHeight="38.0" prefWidth="199.0" />
+      <Text layoutX="192.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name         :" wrappingWidth="158.61669921875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="194.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname    :" wrappingWidth="145.61669921875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="195.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department :" wrappingWidth="145.61669921875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="199.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position       :" wrappingWidth="145.61669921875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Label fx:id="name" layoutX="345.0" layoutY="198.0" prefHeight="31.0" prefWidth="327.0" text="Label" />
+      <Label fx:id="department" layoutX="345.0" layoutY="340.0" prefHeight="31.0" prefWidth="327.0" text="Label" />
+      <Label fx:id="lastname" layoutX="345.0" layoutY="270.0" prefHeight="31.0" prefWidth="327.0" text="Label" />
+      <Label fx:id="Position" layoutX="345.0" layoutY="412.0" prefHeight="31.0" prefWidth="327.0" text="Label" />
+   </children>
+</Pane>
