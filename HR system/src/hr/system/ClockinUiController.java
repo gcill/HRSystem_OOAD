@@ -84,8 +84,13 @@ public class ClockinUiController implements Initializable {
     }
 
     @FXML
-    void ClicktoApprove(ActionEvent event) {
-
+    void ClicktoApprove(ActionEvent event)throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("ApproveWork.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();
     }
 
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ApproveWorkController">
+   <children>
+      <Label fx:id="Date" layoutX="304.0" layoutY="130.0" prefHeight="39.0" prefWidth="204.0" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="Choosebtn" layoutX="342.0" layoutY="213.0" mnemonicParsing="false" onAction="#ClicktoChoosefiles" prefHeight="34.0" prefWidth="108.0" text="Choose files" />
+      <Label fx:id="FilesUpload" layoutX="55.0" layoutY="211.0" prefHeight="39.0" prefWidth="241.0" text="Label" />
+      <Button fx:id="Uploadbtn" layoutX="315.0" layoutY="284.0" mnemonicParsing="false" onAction="#ClicktoUpload" prefHeight="34.0" prefWidth="161.0" text="Upload and Clockout" />
+      <Text layoutX="184.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approve Work">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

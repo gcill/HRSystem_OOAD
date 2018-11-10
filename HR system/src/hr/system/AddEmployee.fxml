@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.AddEmployeeController">
+   <children>
+      <Text layoutX="303.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Employee">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text layoutX="135.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name                :" wrappingWidth="268.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="132.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname           :" wrappingWidth="232.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="132.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department       :" wrappingWidth="226.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="132.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position             :" wrappingWidth="208.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="132.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type                   :" wrappingWidth="232.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="134.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary                 :" wrappingWidth="259.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="134.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create ID            :" wrappingWidth="208.08642578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="132.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Password :" wrappingWidth="179.470703125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="addbtn" layoutX="607.0" layoutY="613.0" mnemonicParsing="false" onAction="#ClickAdd" prefHeight="45.0" prefWidth="98.0" text="ADD" />
+      <TextField fx:id="createname" layoutX="322.0" layoutY="154.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createlastname" layoutX="322.0" layoutY="207.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createdepartment" layoutX="322.0" layoutY="255.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createposition" layoutX="322.0" layoutY="306.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createtype" layoutX="322.0" layoutY="360.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createsalary" layoutX="322.0" layoutY="418.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createid" layoutX="322.0" layoutY="472.0" prefHeight="31.0" prefWidth="346.0" />
+      <TextField fx:id="createpassword" layoutX="322.0" layoutY="527.0" prefHeight="31.0" prefWidth="346.0" />
+   </children>
+</Pane>
