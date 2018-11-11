@@ -22,19 +22,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
 /**
  * FXML Controller class
  *
  * @author natthanan
  */
-public class ClockinUiController implements Initializable {
+public class ClockinUiController extends LogInpageController implements Initializable   {
     
     @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();  
         Date.setText(dtf.format(now));
-        
+         
         //name.setText(Singleton.getInstance().getName());
         
          name.setText("Bruno");
@@ -63,6 +65,8 @@ public class ClockinUiController implements Initializable {
 
     @FXML
     private Label lastname;
+    
+        
 
     @FXML
     void ClicktoClockin(ActionEvent event) throws IOException {
@@ -73,6 +77,7 @@ public class ClockinUiController implements Initializable {
            app_stage.hide();
            app_stage.setScene(root_scene);
            app_stage.show();
+           
            
            /*clockinfailed not match with schedule
            Parent root = FXMLLoader.load(getClass().getResource("Clockinfailed.fxml"));
@@ -92,7 +97,7 @@ public class ClockinUiController implements Initializable {
            app_stage.setScene(root_scene);
            app_stage.show();
     }
-
+    
 }
 
    
