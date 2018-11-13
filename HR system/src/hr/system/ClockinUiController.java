@@ -29,6 +29,13 @@ import javafx.stage.Stage;
  * @author natthanan
  */
 public class ClockinUiController extends LogInpageController implements Initializable   {
+
+    @FXML
+    private Button ApproveMywbtn;
+    @FXML
+    private Button Managebtn;
+    @FXML
+    private Button Approvebtn1;
     
     @Override
     
@@ -48,8 +55,6 @@ public class ClockinUiController extends LogInpageController implements Initiali
       @FXML
     private Label Position;
 
-    @FXML
-    private Button Approvebtn;
 
     @FXML
     private Label name;
@@ -96,6 +101,14 @@ public class ClockinUiController extends LogInpageController implements Initiali
            app_stage.hide();
            app_stage.setScene(root_scene);
            app_stage.show();
+    }
+
+    @FXML
+    private void ClicktoApproveMywork(ActionEvent event) {
+    }
+
+    @FXML
+    private void ClicktoManage(ActionEvent event) {
     }
     
 }

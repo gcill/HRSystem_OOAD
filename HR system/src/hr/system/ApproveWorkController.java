@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -63,7 +64,7 @@ public class ApproveWorkController implements Initializable {
         try {
         Class.forName("com.mysql.jdbc.Driver");
         return  DriverManager.getConnection("jdbc:mysql://localhost/mydatabase" +
-        "?user=root&password=root");
+        "?user=root&password=net0802310965");
         } catch (ClassNotFoundException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -77,8 +78,12 @@ public class ApproveWorkController implements Initializable {
     
     @FXML
     private void ClicktoUpload(ActionEvent event) {
-             
-            }
- }
             
+
+            }
+    // Save Data
+
+   
+}
+         
 

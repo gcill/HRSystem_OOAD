@@ -24,6 +24,7 @@ public class main extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("LogInpage.fxml")); 
         //testfor HR add Employee to databases
         //Parent root = FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("Schedule.fxml"));
         Scene scene = new Scene(root); 
          
         stage.setScene(scene); 

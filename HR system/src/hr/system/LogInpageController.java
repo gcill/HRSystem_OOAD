@@ -52,18 +52,34 @@ public class LogInpageController implements Initializable{
             connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=net0802310965");
             Statement s = connect.createStatement();
             
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id.getText()+"' AND password = '"+ Password.getText()+"'";
-             System.out.println(sql1);
+            String sql1 = "SELECT * FROM employee WHERE id = '"+ id.getText()+"' AND password = '"+ Password.getText()+"';";
             ResultSet rec1 = s.executeQuery(sql1);
-           System.out.println(rec1);
-            if(rec1.isBeforeFirst()){
-               Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
+            //For manager
+            String sql2 = "SELECT * FROM employee WHERE id = '"+ id.getText()+"' AND password = '"+ Password.getText()+"' AND Special = 'Manager';";
+            
+            ResultSet rec2 = s.executeQuery(sql2);
+           
+           //System.out.println(rec1);
+            if(rec1 != null)
+            {  
+              if(rec2.isBeforeFirst()){
+               System.out.println(sql2);
+               Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                app_stage.hide();
                app_stage.setScene(root_scene);
                app_stage.show();
-                }else{ JOptionPane.showMessageDialog(null,"Wrong Username and Password");}
+              }
+              else {
+               System.out.println(sql1);
+               Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
+               Scene root_scene = new Scene(root);
+               Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+               app_stage.hide();
+               app_stage.setScene(root_scene);
+               app_stage.show();}
+            }  else{ JOptionPane.showMessageDialog(null,"Wrong Username and Password");}
            }catch (Exception e) {
              JOptionPane.showMessageDialog(null,e);
             }
