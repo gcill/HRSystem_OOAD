@@ -23,6 +23,7 @@ public class main extends Application{
  
     @Override 
     public void start(Stage stage) throws Exception { 
+        
         Parent root = FXMLLoader.load(getClass().getResource("LogInpage.fxml")); 
          //Parent root = FXMLLoader.load(getClass().getResource("ManageSchedule.fxml")); 
         //testfor HR add Employee to databases
@@ -35,29 +36,7 @@ public class main extends Application{
     } 
      
      public static void main(String[] args) { 
-        Connection connect = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +
-            "?user=root&password=qUvKm3L7WwcG5Rz");
-            if(connect != null){
-            System.out.println("Database Connected.");
-            } else {
-            System.out.println("Database Connect Failed.");
-            }
-            } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            }
-            // Close
-            try {
-            if(connect != null){
-            connect.close();
-            }
-            } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            } 
+       
           launch(args); 
         }
 } 

@@ -32,9 +32,6 @@ public class LogInpageController extends SQLmapper implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
        id.getText();
        Password.getText();
-       UIbus bus = UIbus.getInstance();
-       bus.id = Integer.parseInt(id.getText());
-       
     }    
 
 
@@ -50,6 +47,8 @@ public class LogInpageController extends SQLmapper implements Initializable{
     @FXML
     void ClickLogin(ActionEvent event) throws IOException {
            Account AccountT = getAccount(Integer.parseInt(id.getText()));
+           UIbus bus = UIbus.getInstance();
+           bus.id = Integer.parseInt(id.getText());
            System.out.println(AccountT);
            Connection connect = null;
            //System.out.println(rec1);

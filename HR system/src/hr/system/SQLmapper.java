@@ -20,11 +20,11 @@ public class SQLmapper {
         Staff employee = new Staff();
         
          try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connect =  DriverManager.getConnection(dbString);
             Statement s = connect.createStatement();
             
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
+            String sql1 = "SELECT * FROM employee WHERE id = "+ id + ";";
             System.out.println(sql1);
             ResultSet result = s.executeQuery(sql1);
             System.out.println(result);
@@ -59,11 +59,11 @@ public class SQLmapper {
        
         
          try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connect =  DriverManager.getConnection(dbString);
             Statement s = connect.createStatement();
             
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
+            String sql1 = "SELECT * FROM account WHERE id = "+ id + ";";
             System.out.println(sql1);
             ResultSet rec1 = s.executeQuery(sql1);
             
@@ -74,6 +74,8 @@ public class SQLmapper {
             users.setUsername(username);
             users.setPassword(password);
             users.setSpecial(special);
+            
+            System.out.println("perfect");
              
            }catch (Exception e) {
             
