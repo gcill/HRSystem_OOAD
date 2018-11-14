@@ -9,15 +9,16 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SQLmapper {
-    
-    public Staff getStaff(int id) throws IOException{
+    String A;
+    int AccountType;
+    public Staff getStaff(String id) throws IOException{
         
         Connection connect = null;
         Staff employee = new Staff();
         
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=qUvKm3L7WwcG5Rz");
+            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
             Statement s = connect.createStatement();
             
             String sql1 = "SELECT * FROM employee WHERE id = '"+ id;
@@ -29,12 +30,12 @@ public class SQLmapper {
             String lastname = result.getString("lastname");
             String address = result.getString("address");
             String position = result.getString("position");
-            int departmentID = result.getInt("departmentID");
-            int salary = result.getInt("salary");
+            String department = result.getString("department");
+            String salary = result.getString("salary");
             
             employee.setName(name);
             employee.setAddress(address);
-            employee.setDepartmentID(departmentID);
+            employee.setDepartment(department);
             employee.setLastname(lastname);
             employee.setSalary(salary);
             employee.setPosition(position);          
@@ -52,7 +53,7 @@ public class SQLmapper {
         
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=qUvKm3L7WwcG5Rz");
+            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
             Statement s = connect.createStatement();
             
             String sql1 = "SELECT * FROM users WHERE username = '"+ username;
@@ -72,5 +73,34 @@ public class SQLmapper {
             
             }
            return users;
+    }
+     public int getAccount(String id,String Password) throws IOException{
+        
+        Connection connect = null;
+        Account users = new Account();
+       
+        
+         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
+            Statement s = connect.createStatement();
+            
+            String sql1 = "SELECT * FROM employee WHERE id = '"+ id +"' AND password = '"+ Password +"';";
+            System.out.println(sql1);
+            ResultSet rec1 = s.executeQuery(sql1);
+            if (rec1.isBeforeFirst())
+            {
+             while((rec1!=null)&& (rec1.next())){
+                A = rec1.getString("Special");
+             }
+             if (A != null){AccountType = 1;}
+             else AccountType = 2;
+            }
+            else AccountType = 3;
+             
+           }catch (Exception e) {
+            
+            }
+           return AccountType;
     }
 }

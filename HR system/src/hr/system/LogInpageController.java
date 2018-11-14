@@ -26,12 +26,14 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 
-public class LogInpageController implements Initializable{
+public class LogInpageController extends SQLmapper implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        id.getText();
        Password.getText();
+       
+       
     }    
 
 
@@ -40,30 +42,18 @@ public class LogInpageController implements Initializable{
 
     @FXML
     private PasswordField Password;
-    
+   
+   
     
 
     @FXML
     void ClickLogin(ActionEvent event) throws IOException {
-          
+           int AccountT = getAccount(id.getText(),Password.getText());
+           System.out.println(AccountT);
            Connection connect = null;
-         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=net0802310965");
-            Statement s = connect.createStatement();
-            
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id.getText()+"' AND password = '"+ Password.getText()+"';";
-            ResultSet rec1 = s.executeQuery(sql1);
-            //For manager
-            String sql2 = "SELECT * FROM employee WHERE id = '"+ id.getText()+"' AND password = '"+ Password.getText()+"' AND Special = 'Manager';";
-            
-            ResultSet rec2 = s.executeQuery(sql2);
-           
            //System.out.println(rec1);
-            if(rec1 != null)
+            if(AccountT == 1)
             {  
-              if(rec2.isBeforeFirst()){
-               System.out.println(sql2);
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -71,17 +61,15 @@ public class LogInpageController implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();
               }
-              else {
-               System.out.println(sql1);
+            else if (AccountT == 2){
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                app_stage.hide();
                app_stage.setScene(root_scene);
                app_stage.show();}
-            }  else{ JOptionPane.showMessageDialog(null,"Wrong Username and Password");}
-           }catch (Exception e) {
-             JOptionPane.showMessageDialog(null,e);
+             else{ JOptionPane.showMessageDialog(null,"Wrong Username and Password");}
+            
             }
            
     }
@@ -89,6 +77,6 @@ public class LogInpageController implements Initializable{
      
       
 
-}
+
 
 
