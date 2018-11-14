@@ -4,16 +4,15 @@ public class Account {
     private int id;
     private String username;
     private int password;
-    private boolean isManager;
+    private String special;
 
-    public boolean isIsManager() {
-        return isManager;
+    public String getSpecial() {
+        return special;
     }
 
-    public void setIsManager(boolean isManager) {
-        this.isManager = isManager;
+    public void setSpecial(String special) {
+        this.special = special;
     }
-
     public int getId() {
         return id;
     }

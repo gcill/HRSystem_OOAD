@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package hr.system;
 
 import java.io.IOException;
@@ -10,6 +6,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +24,7 @@ import javafx.stage.Stage;
  *
  * @author natthanan
  */
-public class ClockinUiManagerController implements Initializable {
+public class ClockinUiManagerController extends LogInpageController implements Initializable {
 
     @FXML
     private Button Approvebtn1;
@@ -52,16 +50,23 @@ public class ClockinUiManagerController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();  
-        Date.setText(dtf.format(now));
-         
-        //name.setText(Singleton.getInstance().getName());
-        
-         name.setText("Bruno");
-         lastname.setText("Mars");
-         Position.setText("Developer");
-         department.setText("IT Support");
+        try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            Date.setText(dtf.format(now));
+            
+            //name.setText(Singleton.getInstance().getName());
+            
+            UIbus bus = UIbus.getInstance();
+            
+            Staff staff = getStaff(bus.id);
+            name.setText(staff.getName());
+            lastname.setText(staff.getLastname());
+            Position.setText(staff.getPosition());
+            department.setText(staff.getDepartment());
+        } catch (IOException ex) {
+            Logger.getLogger(ClockinUiManagerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
     @FXML

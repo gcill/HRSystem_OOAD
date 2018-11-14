@@ -53,7 +53,7 @@ public class LogInpageController extends SQLmapper implements Initializable{
            System.out.println(AccountT);
            Connection connect = null;
            //System.out.println(rec1);
-            if(AccountT.isIsManager() == true)
+            if(AccountT.getSpecial() == "Manager")
             {  
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
@@ -62,14 +62,14 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();
               }
-            else if (AccountT == 2){
+            else if (AccountT.getSpecial() == "HR"){
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiHR.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                app_stage.hide();
                app_stage.setScene(root_scene);
                app_stage.show();}
-            else if (AccountT == 3){
+            else if (AccountT.getSpecial() == null ){
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
