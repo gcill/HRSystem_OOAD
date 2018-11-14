@@ -22,6 +22,7 @@ public class main extends Application{
     @Override 
     public void start(Stage stage) throws Exception { 
         Parent root = FXMLLoader.load(getClass().getResource("LogInpage.fxml")); 
+         //Parent root = FXMLLoader.load(getClass().getResource("ManageSchedule.fxml")); 
         //testfor HR add Employee to databases
         //Parent root = FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("Schedule.fxml"));

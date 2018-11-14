@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,8 +64,11 @@ public class ScheduleController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now();  
+        Date.setText(dtf.format(now));
         
-    
+        Department.setText("Marketing");
            
   
          Connection connect = null;

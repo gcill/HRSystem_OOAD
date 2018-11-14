@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hr.system;
 
 import java.io.IOException;
@@ -117,16 +112,7 @@ public class ClockinUiController extends LogInpageController implements Initiali
            app_stage.setScene(root_scene);
            app_stage.show();
     }
-
-    @FXML
-    private void ClicktoApproveMywork(ActionEvent event) {
-    }
-
-    @FXML
-    private void ClicktoManage(ActionEvent event) {
-    }
-    
 }
 
-   
+    
     
