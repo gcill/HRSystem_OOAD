@@ -20,11 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author natthanan
- */
 public class ClockinUiController extends LogInpageController implements Initializable   {
 
     @FXML
