@@ -9,7 +9,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SQLmapper {
-    String A;
+    String A ;
+    String B = "Manager" ;
     int AccountType;
     public Staff getStaff(String id) throws IOException{
         
@@ -78,7 +79,7 @@ public class SQLmapper {
         
         Connection connect = null;
         Account users = new Account();
-       
+      
         
          try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -93,10 +94,12 @@ public class SQLmapper {
              while((rec1!=null)&& (rec1.next())){
                 A = rec1.getString("Special");
              }
-             if (A != null){AccountType = 1;}
-             else AccountType = 2;
+             
+             if ("Manager".equals(A)){AccountType = 1;}
+             else if ("HR".equals(A)){AccountType = 2;}
+             else AccountType = 3;
             }
-            else AccountType = 3;
+            else AccountType = 4;
              
            }catch (Exception e) {
             

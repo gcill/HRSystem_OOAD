@@ -42,7 +42,7 @@ public class LogInpageController extends SQLmapper implements Initializable{
 
     @FXML
     private PasswordField Password;
-   
+    
    
     
 
@@ -62,6 +62,13 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.show();
               }
             else if (AccountT == 2){
+               Parent root = FXMLLoader.load(getClass().getResource("ClockinUiHR.fxml"));
+               Scene root_scene = new Scene(root);
+               Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+               app_stage.hide();
+               app_stage.setScene(root_scene);
+               app_stage.show();}
+            else if (AccountT == 3){
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
