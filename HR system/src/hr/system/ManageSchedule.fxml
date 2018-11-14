@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ManageScheduleController">
+   <children>
+      <Text layoutX="253.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Schedule" wrappingWidth="307.6708984375">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Label fx:id="Date" layoutX="192.0" layoutY="109.0" prefHeight="36.0" prefWidth="161.0" text="Label" />
+      <Text layoutX="76.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="76.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Label fx:id="Department" layoutX="192.0" layoutY="143.0" prefHeight="36.0" prefWidth="161.0" text="Label" />
+      <TableView fx:id="TableSch" layoutX="76.0" layoutY="198.0" onSort="#TableSch" prefHeight="405.0" prefWidth="655.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="164.0" text="id" />
+            <TableColumn fx:id="DateCol" prefWidth="167.0" text="Date" />
+            <TableColumn fx:id="CLKinCol" prefWidth="168.0" text="Clock-in " />
+            <TableColumn fx:id="CLKoutCol" prefWidth="155.0" text="Clock-out" />
+        </columns>
+      </TableView>
+      <Button fx:id="Submitbtn" layoutX="645.0" layoutY="758.0" mnemonicParsing="false" onAction="#ClicktoSubmit" prefHeight="36.0" prefWidth="136.0" text="SUBMIT" />
+      <TextField fx:id="DateField" layoutX="223.0" layoutY="645.0" prefHeight="31.0" prefWidth="136.0" promptText="Date" />
+      <TextField fx:id="CLKinfield" layoutX="369.0" layoutY="645.0" prefHeight="31.0" prefWidth="136.0" promptText="Clock-in" />
+      <TextField fx:id="CLKoutfield" layoutX="519.0" layoutY="645.0" prefHeight="31.0" prefWidth="136.0" promptText="Clock-out" />
+      <Button layoutX="666.0" layoutY="645.0" mnemonicParsing="false" onAction="#Clicktoadd" text="Add" />
+      <ChoiceBox fx:id="idchoice" layoutX="76.0" layoutY="645.0" prefHeight="31.0" prefWidth="136.0" />
+   </children>
+</Pane>
