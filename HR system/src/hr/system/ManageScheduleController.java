@@ -77,9 +77,10 @@ public class ManageScheduleController implements Initializable {
             
             while((rec!=null) && (rec.next()))
             {          
-               String n = rec.getString("id"); 
+               String n = rec.getString("name"); 
+               String l = rec.getString("lastname"); 
                System.out.println(n);
-               idchoice.getItems().addAll(n);
+               idchoice.getItems().addAll(n+l);
             }
             rec.close();
          }  catch (Exception e) {    
