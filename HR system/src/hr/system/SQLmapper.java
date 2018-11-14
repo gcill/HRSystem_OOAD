@@ -100,4 +100,24 @@ public class SQLmapper {
             JOptionPane.showMessageDialog(null,"Error AddEmployee"+e);
         }
     }
+    public void setStaff(Staff staff){
+        Connection connect = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect =  DriverManager.getConnection(dbString);
+            Statement stmt = connect.createStatement();
+            
+            
+            String query = "insert into account(id,name,lastname,position,address,department,departmentID,salary)values('"+staff.id+"','"+staff.getName()+"','"+staff.getPosition()+"','"+staff.getAddress()+"','"+staff.getDepartment()+"','"+staff.getDepartmentID()+"','"+staff.getSalary()+"');";
+            System.out.println(query);
+           
+            stmt.executeUpdate(query);
+            
+            
+         }  catch (Exception e) {    
+             
+            JOptionPane.showMessageDialog(null,"Error AddEmployee"+e);
+        }
+    }
 }

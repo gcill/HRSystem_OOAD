@@ -3,6 +3,7 @@ package hr.system;
 
 public class Staff extends Fulltime {
     private String department;
+    public int id;
 
     public String getDepartment() {
         return department;
