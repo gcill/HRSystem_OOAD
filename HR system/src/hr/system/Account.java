@@ -2,6 +2,17 @@ package hr.system;
 
 public class Account {
     private int id;
+    private String username;
+    private int password;
+    private boolean isManager;
+
+    public boolean isIsManager() {
+        return isManager;
+    }
+
+    public void setIsManager(boolean isManager) {
+        this.isManager = isManager;
+    }
 
     public int getId() {
         return id;
@@ -10,8 +21,6 @@ public class Account {
     public void setId(int id) {
         this.id = id;
     }
-    private String username;
-    private int password;
 
     public String getUsername() {
         return username;

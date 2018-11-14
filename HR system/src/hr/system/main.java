@@ -34,9 +34,9 @@ public class main extends Application{
      public static void main(String[] args) { 
         Connection connect = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +
-            "?user=root&password=net0802310965");
+            "?user=root&password=qUvKm3L7WwcG5Rz");
             if(connect != null){
             System.out.println("Database Connected.");
             } else {

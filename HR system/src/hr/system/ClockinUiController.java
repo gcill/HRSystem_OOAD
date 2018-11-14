@@ -16,6 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -40,16 +42,29 @@ public class ClockinUiController extends LogInpageController implements Initiali
     @Override
     
     public void initialize(URL url, ResourceBundle rb) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();  
-        Date.setText(dtf.format(now));
-         
-        //name.setText(Singleton.getInstance().getName());
-        
-         name.setText("Bruno");
-         lastname.setText("Mars");
-         Position.setText("Developer");
-         department.setText("IT Support");
+        try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            Date.setText(dtf.format(now));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "LogInpage.fxm")
+            );
+            
+            //name.setText(Singleton.getInstance().getName
+            
+            // singlton class for databus
+            UIbus bus = UIbus.getInstance();
+            
+            Staff staff = getStaff(bus.id);
+            name.setText(staff.getName());
+            lastname.setText(staff.getLastname());
+            Position.setText(staff.getPosition());
+            department.setText(staff.getDepartment());
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ClockinUiController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
       @FXML

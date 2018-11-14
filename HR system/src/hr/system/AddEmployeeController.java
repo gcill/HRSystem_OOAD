@@ -83,8 +83,8 @@ public class AddEmployeeController implements Initializable {
     private void ClickAdd(ActionEvent event) {
         Connection connect = null;
          try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=net0802310965");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=qUvKm3L7WwcG5Rz");
             Statement stmt = connect.createStatement();
             
             

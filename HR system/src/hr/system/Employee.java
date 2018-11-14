@@ -9,8 +9,6 @@ public abstract class Employee {
      protected String address;
      protected int departmentID;
 
-     public abstract int calculateIncome();
-
      public abstract String getName();
      public abstract void setName(String name);
      public abstract String getAddress();

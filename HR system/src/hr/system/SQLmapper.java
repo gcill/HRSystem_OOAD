@@ -9,9 +9,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SQLmapper {
-    String A;
-    int AccountType;
-    public Staff getStaff(String id) throws IOException{
+    
+    public Staff getStaff(int id) throws IOException{
         
         Connection connect = null;
         Staff employee = new Staff();
@@ -21,7 +20,7 @@ public class SQLmapper {
             connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
             Statement s = connect.createStatement();
             
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id;
+            String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
             System.out.println(sql1);
             ResultSet result = s.executeQuery(sql1);
             System.out.println(result);
@@ -31,14 +30,16 @@ public class SQLmapper {
             String address = result.getString("address");
             String position = result.getString("position");
             String department = result.getString("department");
-            String salary = result.getString("salary");
+            int departmentId = result.getInt("departmentId");
+            int salary = result.getInt("salary");
             
             employee.setName(name);
             employee.setAddress(address);
-            employee.setDepartment(department);
+            employee.setDepartmentID(departmentId);
             employee.setLastname(lastname);
             employee.setSalary(salary);
-            employee.setPosition(position);          
+            employee.setPosition(position);
+            employee.setDepartment(department);
              
            }catch (Exception e) {
             
@@ -46,35 +47,8 @@ public class SQLmapper {
            return employee;
     }
     
-    public Account getUsers(int username) throws IOException{
-        
-        Connection connect = null;
-        Account users = new Account();
-        
-         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
-            Statement s = connect.createStatement();
-            
-            String sql1 = "SELECT * FROM users WHERE username = '"+ username;
-            System.out.println(sql1);
-            ResultSet result = s.executeQuery(sql1);
-            System.out.println(result);
-            
-            
-            int id = result.getInt("id");
-            users.setId(id);
-            String usersname = result.getString("username");
-            users.setUsername(usersname);
-            int password = result.getInt("password");
-            users.setId(password);
-             
-           }catch (Exception e) {
-            
-            }
-           return users;
-    }
-     public int getAccount(String id,String Password) throws IOException{
+
+    public Account getAccount(int id) throws IOException{
         
         Connection connect = null;
         Account users = new Account();
@@ -85,22 +59,21 @@ public class SQLmapper {
             connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
             Statement s = connect.createStatement();
             
-            String sql1 = "SELECT * FROM employee WHERE id = '"+ id +"' AND password = '"+ Password +"';";
+            String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
             System.out.println(sql1);
             ResultSet rec1 = s.executeQuery(sql1);
-            if (rec1.isBeforeFirst())
-            {
-             while((rec1!=null)&& (rec1.next())){
-                A = rec1.getString("Special");
-             }
-             if (A != null){AccountType = 1;}
-             else AccountType = 2;
-            }
-            else AccountType = 3;
-             
-           }catch (Exception e) {
+            
+            String username = rec1.getString("username");
+            int password = rec1.getInt("password");
+            boolean isManager = rec1.getBoolean("isManager");
+        
+            users.setUsername(username);
+            users.setPassword(password);
+            users.setIsManager(isManager);
+                   
+            }catch (Exception e) {
             
             }
-           return AccountType;
+            return users;        
     }
 }

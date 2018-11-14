@@ -2,10 +2,14 @@
 package hr.system;
 
 public class Staff extends Fulltime {
+    private String department;
 
-    @Override
-    public int calculateIncome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     @Override

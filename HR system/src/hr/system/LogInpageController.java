@@ -32,7 +32,8 @@ public class LogInpageController extends SQLmapper implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
        id.getText();
        Password.getText();
-       
+       UIbus bus = UIbus.getInstance();
+       bus.id = Integer.parseInt(id.getText());
        
     }    
 
@@ -48,11 +49,11 @@ public class LogInpageController extends SQLmapper implements Initializable{
 
     @FXML
     void ClickLogin(ActionEvent event) throws IOException {
-           int AccountT = getAccount(id.getText(),Password.getText());
+           Account AccountT = getAccount(Integer.parseInt(id.getText()));
            System.out.println(AccountT);
            Connection connect = null;
            //System.out.println(rec1);
-            if(AccountT == 1)
+            if(AccountT.isIsManager() == true)
             {  
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
@@ -61,18 +62,22 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();
               }
-            else if (AccountT == 2){
+            else if (AccountT.isIsManager() == false){
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                app_stage.hide();
                app_stage.setScene(root_scene);
-               app_stage.show();}
-             else{ JOptionPane.showMessageDialog(null,"Wrong Username and Password");}
-            
+               app_stage.show();
             }
-           
+            else{ 
+                JOptionPane.showMessageDialog(null,"Wrong Username and Password");
+            }   
     }
+
+
+           
+}
     
      
       
