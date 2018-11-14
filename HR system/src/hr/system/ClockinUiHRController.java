@@ -72,7 +72,13 @@ public class ClockinUiHRController extends LogInpageController implements Initia
     }    
 
     @FXML
-    private void ClicktoRemoveEm(ActionEvent event) {
+    private void ClicktoRemoveEm(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("RemoveEmployee.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();
     }
 
     @FXML

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.RemoveEmployeeController">
+   <children>
+      <Text layoutX="274.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove Employee">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="153.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Department">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="153.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Employee">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="selectbtn" layoutX="352.0" layoutY="295.0" mnemonicParsing="false" onAction="#ClicktoSelect" prefHeight="43.0" prefWidth="105.0" text="SELECT" />
+      <ComboBox fx:id="Department" layoutX="371.0" layoutY="136.0" onAction="#ChooseDepart" prefHeight="31.0" prefWidth="295.0" />
+      <ComboBox fx:id="Employee" layoutX="371.0" layoutY="211.0" onAction="#ChooseEmployee" prefHeight="31.0" prefWidth="295.0" />
+   </children>
+</Pane>
