@@ -45,6 +45,9 @@ public class ManageScheduleController implements Initializable {
     @FXML private TextField CLKinfield;
     @FXML private TextField DateField;
     @FXML private TextField CLKoutfield;
+    @FXML private Button datebtn;
+    @FXML private Button CLKinbtn;
+    @FXML private Button CLKoutbtn;
     
   
 
@@ -117,5 +120,20 @@ public class ManageScheduleController implements Initializable {
         System.out.println(CLKinfield.getText());
         System.out.println(CLKoutfield.getText());
     }
+       @FXML
+    void SelectDate(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SelectCLKin(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SelectCLKout(ActionEvent event) {
+
+    }
+
     
 }
