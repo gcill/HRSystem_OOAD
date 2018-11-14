@@ -7,17 +7,21 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 public class SQLmapper {
-
+    
+    String dbString = "jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=qUvKm3L7WwcG5Rz";
+    
     public Staff getStaff(int id) throws IOException{
+        
         
         Connection connect = null;
         Staff employee = new Staff();
         
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
+            connect =  DriverManager.getConnection(dbString);
             Statement s = connect.createStatement();
             
             String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
@@ -56,7 +60,7 @@ public class SQLmapper {
         
          try {
             Class.forName("com.mysql.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem" +"?user=root&password=net0802310965");
+            connect =  DriverManager.getConnection(dbString);
             Statement s = connect.createStatement();
             
             String sql1 = "SELECT * FROM employee WHERE id = '"+ id + "';";
@@ -75,5 +79,25 @@ public class SQLmapper {
             
             }
            return users;
+    }
+    public void setAccount(Account account){
+        Connection connect = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect =  DriverManager.getConnection(dbString);
+            Statement stmt = connect.createStatement();
+            
+            
+            String query = "insert into account(id,username,special)values('"+account.getId()+"','"+account.getUsername()+"','"+account.getSpecial()+"');";
+            System.out.println(query);
+           
+            stmt.executeUpdate(query);
+            
+            
+         }  catch (Exception e) {    
+             
+            JOptionPane.showMessageDialog(null,"Error AddEmployee"+e);
+        }
     }
 }
