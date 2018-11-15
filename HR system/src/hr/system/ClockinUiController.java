@@ -2,6 +2,7 @@ package hr.system;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +32,7 @@ public class ClockinUiController extends LogInpageController implements Initiali
     
     @Override
     
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)  {
         try {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
@@ -52,7 +53,9 @@ public class ClockinUiController extends LogInpageController implements Initiali
             Position.setText(staff.getPosition());
             department.setText(staff.getDepartment());
             
-        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClockinUiController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ClockinUiController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    

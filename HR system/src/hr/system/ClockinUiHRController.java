@@ -7,6 +7,7 @@ package hr.system;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -66,7 +67,9 @@ public class ClockinUiHRController extends LogInpageController implements Initia
             lastname.setText(staff.getLastname());
             Position.setText(staff.getPosition());
             department.setText(staff.getDepartment());
-        } catch (IOException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClockinUiHRController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ClockinUiHRController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    

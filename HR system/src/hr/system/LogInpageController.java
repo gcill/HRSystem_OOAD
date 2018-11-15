@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package hr.system;
 
 import java.io.IOException;
@@ -10,6 +6,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -45,14 +42,25 @@ public class LogInpageController extends SQLmapper implements Initializable{
     
 
     @FXML
-    void ClickLogin(ActionEvent event) throws IOException {
+    void ClickLogin(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
            Account AccountT = getAccount(Integer.parseInt(id.getText()));
            UIbus bus = UIbus.getInstance();
            bus.id = Integer.parseInt(id.getText());
            System.out.println(AccountT);
            Connection connect = null;
-           //System.out.println(rec1);
-            if(AccountT.getSpecial() == "Manager")
+           //when no user id in table
+            if(AccountT == null){
+                
+                System.out.println("login Failed : incorrect username or password");
+            }
+            else if(AccountT != null){
+                
+            if(AccountT.getPassword() != Integer.parseInt(Password.getText()) ){
+                
+                System.out.println("login Failed : incorrect username or password");
+                
+            }
+            else if(AccountT.getSpecial() == "Manager")
             {  
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
@@ -76,6 +84,7 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();
             }
+         }
             else{ 
                 JOptionPane.showMessageDialog(null,"Wrong Username and Password");
             }   
