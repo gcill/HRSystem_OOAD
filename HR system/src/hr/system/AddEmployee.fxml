@@ -61,5 +61,6 @@
       <TextField fx:id="createsalary" layoutX="322.0" layoutY="418.0" prefHeight="31.0" prefWidth="346.0" />
       <TextField fx:id="createid" layoutX="322.0" layoutY="472.0" prefHeight="31.0" prefWidth="346.0" />
       <TextField fx:id="createpassword" layoutX="322.0" layoutY="527.0" prefHeight="31.0" prefWidth="346.0" />
+      <Button layoutX="705.0" layoutY="30.0" mnemonicParsing="false" onAction="#ClickBack" text="Back" />
    </children>
 </Pane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.CLKFailedController">
+   <children>
+      <Text layoutX="122.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clock in Failed !" wrappingWidth="254.0615234375">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Text layoutX="134.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are not in Schdule">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="Authorizebtn" layoutX="134.0" layoutY="162.0" mnemonicParsing="false" onAction="#ClicktoAuthorizes" text="Authorized" />
+      <Button fx:id="cancel" layoutX="249.0" layoutY="162.0" mnemonicParsing="false" onAction="#ClicktoCancel" text="Cancel" />
+   </children>
+</Pane>

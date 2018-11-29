@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class SQLmapper {
@@ -12,19 +13,21 @@ public class SQLmapper {
     static private DBHandler dbHandler;
     static private Connection connection;
     
-    public Staff getStaff(int id) throws ClassNotFoundException, SQLException{
+    public Staff getStaff(String username) throws ClassNotFoundException, SQLException{
         
             Staff employee = new Staff();
             dbHandler = new DBHandler();
             connection = dbHandler.getDBConnection();
             
-            String query = "SELECT * FROM employee WHERE id = "+ id + ";";
+            String query = "SELECT * FROM employee WHERE username = '"+ username + "';";
             System.out.println(query);
             preparedStatement = connection.prepareStatement(query);
         
             ResultSet result = preparedStatement.executeQuery();
             if(result.next()){
-        
+              
+                int id = result.getInt("id");
+             
                 String name = result.getString("name");
                 String lastname = result.getString("lastname");
                 String address = result.getString("address");
@@ -32,7 +35,9 @@ public class SQLmapper {
                 String department = result.getString("department");
                 int departmentId = result.getInt("departmentId");
                 int salary = result.getInt("salary");
-                
+                System.out.println(id);
+                employee.setID(id);
+                employee.setUsername(username);
                 employee.setName(name);
                 employee.setAddress(address);
                 employee.setDepartmentID(departmentId);
@@ -46,26 +51,72 @@ public class SQLmapper {
            return employee;
     }
     
-    public Account getAccount(int id)throws ClassNotFoundException, SQLException{
+     public Session getSession(String username) throws ClassNotFoundException, SQLException{
+        
+            Session session = new Session();
+            dbHandler = new DBHandler();
+            connection = dbHandler.getDBConnection();
+            
+            String query = "SELECT * FROM session WHERE username = '"+ username + "';";
+            
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            
+            System.out.println(query);
+            if(result.next()){
+              
+                String date = result.getString("date");
+                String clockintime = result.getString("clkin");
+                String clockoutime = result.getString("clkout");
+                
+               
+                session.setUsername(username);
+                session.setDate(date);
+                session.setCLKin(clockintime);
+                session.setCLKout(clockoutime);
+                
+            }
+             return session;
+          
+    }
+    public Session setSession(String username,String date,String CLKin,String CLKout) throws ClassNotFoundException, SQLException{
+            Session session = new Session();
+            dbHandler = new DBHandler();
+            connection = dbHandler.getDBConnection();
+            Statement stmt = connection.createStatement();
+            //Keep in to session table
+            String query = "insert into session(username,date,clkin,clkout)values('"+username+"','"+date+"','"+CLKin+"','"+CLKout+"');";
+            System.out.println(query);
+           
+            preparedStatement = connection.prepareStatement(query);
+        
+            System.out.println(query);     
+            ResultSet result = preparedStatement.executeQuery();
+            return session;
+    
+    }
+    public Account getAccount(String username)throws ClassNotFoundException, SQLException{
         
         dbHandler = new DBHandler();
         connection = dbHandler.getDBConnection();
         Account users = new Account();
        
-        String query = "SELECT * FROM account WHERE id = "+ id + ";";
-        System.out.println(query);
+        String query = "SELECT * FROM employee WHERE username = '"+ username + "';";
+        
         preparedStatement = connection.prepareStatement(query);
-            
+        
+        System.out.println(query);     
         ResultSet result = preparedStatement.executeQuery();
         if(result.next()){
             
-            String username = result.getString("username");
+            int id = result.getInt("id");
             int password = result.getInt("password");
             String special = result.getString("special");
             
             users.setUsername(username);
             users.setPassword(password);
             users.setSpecial(special);
+            users.setId(id);
             
         }
            return users;

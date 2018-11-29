@@ -47,7 +47,7 @@ public class ClockinUiController extends LogInpageController implements Initiali
             // singlton class for databus
             UIbus bus = UIbus.getInstance();
             
-            Staff staff = getStaff(bus.id);
+            Staff staff = getStaff(bus.username);
             name.setText(staff.getName());
             lastname.setText(staff.getLastname());
             Position.setText(staff.getPosition());
@@ -82,23 +82,29 @@ public class ClockinUiController extends LogInpageController implements Initiali
         
 
     @FXML
-    void ClicktoClockin(ActionEvent event) throws IOException {
+    void ClicktoClockin(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         
+           UIbus bus = UIbus.getInstance();
+           Staff staff = getStaff(bus.username);
+           ClockinSystem c = new ClockinSystem();
+           ////class ClockinSystem
+           boolean result = c.checkTimetoClockin(staff.getUsername());
+           System.out.println(result);
+           if(result == true){
            Parent root = FXMLLoader.load(getClass().getResource("CLKinSuccess.fxml"));
            Scene root_scene = new Scene(root);
            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            app_stage.hide();
            app_stage.setScene(root_scene);
-           app_stage.show();
+           app_stage.show();}
            
-           
-           /*clockinfailed not match with schedule
-           Parent root = FXMLLoader.load(getClass().getResource("Clockinfailed.fxml"));
+           else {
+           Parent root = FXMLLoader.load(getClass().getResource("CLKFailed.fxml"));
            Scene root_scene = new Scene(root);
            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            app_stage.hide();
            app_stage.setScene(root_scene);
-           app_stage.show();*/
+           app_stage.show();}
     }
 
     @FXML

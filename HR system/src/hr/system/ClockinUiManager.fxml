@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ClockinUiManagerController">
    <children>
       <Button fx:id="Approvebtn1" layoutX="612.0" layoutY="527.0" mnemonicParsing="false" onAction="#ClicktoApprove" text="Approve work">

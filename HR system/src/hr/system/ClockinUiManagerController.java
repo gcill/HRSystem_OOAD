@@ -45,13 +45,14 @@ public class ClockinUiManagerController extends LogInpageController implements I
     private Button ApproveMywbtn;
     @FXML
     private Button Clockinbtn;
-
+    boolean result;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy    HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             Date.setText(dtf.format(now));
@@ -59,8 +60,7 @@ public class ClockinUiManagerController extends LogInpageController implements I
             //name.setText(Singleton.getInstance().getName());
             
             UIbus bus = UIbus.getInstance();
-            
-            Staff staff = getStaff(bus.id);
+            Staff staff = getStaff(bus.username);
             name.setText(staff.getName());
             lastname.setText(staff.getLastname());
             Position.setText(staff.getPosition());
@@ -73,34 +73,61 @@ public class ClockinUiManagerController extends LogInpageController implements I
     }    
 
     @FXML
-    private void ClicktoApprove(ActionEvent event) {
-    }
-
-    @FXML
-    private void ClicktoManage(ActionEvent event) {
-    }
-
-    @FXML
-    private void ClicktoApproveMywork(ActionEvent event) {
-    }
-
-    @FXML
-    private void ClicktoClockin(ActionEvent event) throws IOException {
-           Parent root = FXMLLoader.load(getClass().getResource("CLKinSuccess.fxml"));
+    private void ClicktoApprove(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("ApproveEmployeeWork.fxml"));
            Scene root_scene = new Scene(root);
            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            app_stage.hide();
            app_stage.setScene(root_scene);
            app_stage.show();
-           
-           
-           /*clockinfailed not match with schedule
-           Parent root = FXMLLoader.load(getClass().getResource("Clockinfailed.fxml"));
+    }
+    
+
+    @FXML
+    private void ClicktoManage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ManageSchedule.fxml"));
            Scene root_scene = new Scene(root);
            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
            app_stage.hide();
            app_stage.setScene(root_scene);
-           app_stage.show();*/
+           app_stage.show();
+    }
+
+    @FXML
+    private void ClicktoApproveMywork(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Approvework.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();
+    }
+    
+
+    @FXML
+    private void ClicktoClockin(ActionEvent event) throws IOException ,ClassNotFoundException, SQLException {
+           UIbus bus = UIbus.getInstance();
+           Staff staff = getStaff(bus.username);
+           ClockinSystem c = new ClockinSystem();
+           ////class ClockinSystem
+           result = c.checkTimetoClockin(staff.getUsername());
+           System.out.println(result);
+           
+           if(result == true){
+           Parent root = FXMLLoader.load(getClass().getResource("CLKinSuccess.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();}
+           
+           else {
+           Parent root = FXMLLoader.load(getClass().getResource("CLKFailed.fxml"));
+           Scene root_scene = new Scene(root);
+           Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+           app_stage.hide();
+           app_stage.setScene(root_scene);
+           app_stage.show();}
     
     }
     

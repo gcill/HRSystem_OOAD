@@ -43,10 +43,12 @@ public class LogInpageController extends SQLmapper implements Initializable{
 
     @FXML
     void ClickLogin(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
-           Account AccountT = getAccount(Integer.parseInt(id.getText()));
-           UIbus bus = UIbus.getInstance();
-           bus.id = Integer.parseInt(id.getText());
+           Account AccountT = getAccount(id.getText());
            System.out.println(AccountT);
+           UIbus bus = UIbus.getInstance();
+           bus.username = id.getText();
+           System.out.println(AccountT);
+           
            Connection connect = null;
            //when no user id in table
             if(AccountT == null){
@@ -60,8 +62,9 @@ public class LogInpageController extends SQLmapper implements Initializable{
                 System.out.println("login Failed : incorrect username or password");
                 
             }
-            else if(AccountT.getSpecial() == "Manager")
+            else if( "Manager".equals(AccountT.getSpecial()))
             {  
+                System.out.println(AccountT.getSpecial());
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiManager.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,7 +72,8 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();
               }
-            else if (AccountT.getSpecial() == "HR"){
+            else if ("HR".equals(AccountT.getSpecial())){
+               System.out.println(AccountT.getSpecial());
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUiHR.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -77,6 +81,7 @@ public class LogInpageController extends SQLmapper implements Initializable{
                app_stage.setScene(root_scene);
                app_stage.show();}
             else if (AccountT.getSpecial() == null ){
+                System.out.println(AccountT.getSpecial());
                Parent root = FXMLLoader.load(getClass().getResource("ClockinUi.fxml"));
                Scene root_scene = new Scene(root);
                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

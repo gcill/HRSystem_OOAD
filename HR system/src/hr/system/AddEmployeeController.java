@@ -5,6 +5,7 @@
  */
 package hr.system;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,10 +16,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 
@@ -84,11 +90,11 @@ public class AddEmployeeController implements Initializable {
         Connection connect = null;
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=qUvKm3L7WwcG5Rz");
+            connect =  DriverManager.getConnection("jdbc:mysql://localhost/hrsystem" +"?user=root&password=net0802310965");
             Statement stmt = connect.createStatement();
             
             
-            query = "insert into employee(id,password,name,lastname,department,position,type,salary)values('"+createid.getText()+"','"+createpassword.getText()+"','"+createname.getText()+"','"+createlastname.getText()+"','"+createdepartment.getText()+"','"+createposition.getText()+"','"+createtype.getText()+"','"+createsalary.getText()+"');";
+            query = "insert into employee(username,password,name,lastname,department,position,type,salary)values('"+createid.getText()+"','"+createpassword.getText()+"','"+createname.getText()+"','"+createlastname.getText()+"','"+createdepartment.getText()+"','"+createposition.getText()+"','"+createtype.getText()+"','"+createsalary.getText()+"');";
             System.out.println(query);
            
             stmt.executeUpdate(query);
@@ -99,6 +105,15 @@ public class AddEmployeeController implements Initializable {
         }
         
         
+    }
+      @FXML
+    void ClickBack(ActionEvent event) throws IOException {
+            Parent root = FXMLLoader.load(getClass().getResource("ClockinUiHR.fxml"));
+               Scene root_scene = new Scene(root);
+               Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+               app_stage.hide();
+               app_stage.setScene(root_scene);
+               app_stage.show();
     }
     
 }
