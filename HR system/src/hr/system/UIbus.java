@@ -4,6 +4,7 @@ package hr.system;
 public class UIbus {
     private static UIbus instance = null;
     public int id;
+    public String username;
     public int passsword;
     private UIbus() {
       // Exists only to defeat instantiation.

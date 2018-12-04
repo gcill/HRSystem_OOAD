@@ -24,24 +24,35 @@ public class ClockinSystem extends SQLmapper{
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
         
-        Session sess = getSession(username);
+        Session sess = getSession(username); ///sql
         System.out.println(sess.getUsername());
         ///set current time
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH.mm");
         LocalDateTime current = LocalDateTime.now();
         float currenttime=Float.parseFloat(time.format(current));   ////convert sting ->float
         System.out.println("Now : " +currenttime); /////print current date
-        System.out.println("Clkintime : "+sess.getCLKin()); /////print clkintime
+        System.out.println("Clkintime : "+sess.getCLKin()); /////print clkintime from session class
+        
+        if(sess.getCLKin() == null){
+            JOptionPane.showMessageDialog(null,"No schdule for Today");///No username in session
+        }
+        
+   
         float clockintime=Float.parseFloat(sess.getCLKin());    ////convert sting ->float
+         float clockouttime=Float.parseFloat(sess.getCLKout());
         
         System.out.println("today :"+dtf.format(now));
         System.out.println("Day in Scedule : "+sess.getDate());
         float late = currenttime - clockintime; 
         
-       /////Compare Date
-        if(sess.getDate().equals(dtf.format(now))){
+       /////Compare Date ///
+       if(sess.getDate().equals(dtf.format(now)) ){
+             if(currenttime >  clockouttime){
+               JOptionPane.showMessageDialog(null,"You not in Schedule!"); ///เลยเวลาclockout
+               result = false; ///เอาเช็คว่าclockinผ่านไหม
+             }
              /////check time in schedule > current time
-             if(late >= 1.00){ ///// clock in late 1 hour
+             else if(late >= 1.00){ ///// clock in late 1 hour
                JOptionPane.showMessageDialog(null,"You Late!");
                System.out.println("late :"+ late );
                result = true;
@@ -57,7 +68,7 @@ public class ClockinSystem extends SQLmapper{
                result = false;
             }
         }
-        else{System.out.println("No schdule for Today");
+        else{System.out.println("No schdule for Today"); ///;วันที่ไม่ตรง
              result = false;}
         
        return result;

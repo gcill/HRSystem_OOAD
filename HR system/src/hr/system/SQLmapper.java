@@ -69,7 +69,7 @@ public class SQLmapper {
                 String clockintime = result.getString("clkin");
                 String clockoutime = result.getString("clkout");
                 
-               
+               ////set everything in session
                 session.setUsername(username);
                 session.setDate(date);
                 session.setCLKin(clockintime);
@@ -79,22 +79,21 @@ public class SQLmapper {
              return session;
           
     }
-    public Session setSession(String username,String date,String CLKin,String CLKout) throws ClassNotFoundException, SQLException{
-            Session session = new Session();
+    public void setSession(String username,String date,String CLKin,String CLKout) throws ClassNotFoundException, SQLException{
+            System.out.println("kk"); 
             dbHandler = new DBHandler();
             connection = dbHandler.getDBConnection();
             Statement stmt = connection.createStatement();
             //Keep in to session table
             String query = "insert into session(username,date,clkin,clkout)values('"+username+"','"+date+"','"+CLKin+"','"+CLKout+"');";
-            System.out.println(query);
-           
+            System.out.println(query); 
             preparedStatement = connection.prepareStatement(query);
-        
-            System.out.println(query);     
-            ResultSet result = preparedStatement.executeQuery();
-            return session;
+            preparedStatement.executeUpdate();
+            
+            
     
     }
+   
     public Account getAccount(String username)throws ClassNotFoundException, SQLException{
         
         dbHandler = new DBHandler();
@@ -150,4 +149,5 @@ public class SQLmapper {
         preparedStatement.executeUpdate();
             
     }
+     
 }

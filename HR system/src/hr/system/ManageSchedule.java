@@ -22,6 +22,8 @@ public class ManageSchedule {
         
     }
 
+    
+
     public String getUsername() {
         return username.get();
     }
@@ -60,5 +62,13 @@ public class ManageSchedule {
         this.Date = new SimpleStringProperty(Date);
         this.CLKin = new SimpleStringProperty(CLKinH+"."+ CLKinS);
         this.CLKout = new SimpleStringProperty(CLKoutH+"."+ CLKoutS);
+    }
+    public ManageSchedule(String username, String clkin, String clkout) {
+        super();
+      
+        
+        this.username = new SimpleStringProperty(username);
+         this.CLKin = new SimpleStringProperty(clkin);
+        this.CLKout = new SimpleStringProperty(clkout);
     }
 }

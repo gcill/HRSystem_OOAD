@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.system.ShowScheduleController">
+   <children>
+      <TableView fx:id="ShowSch" layoutX="86.0" layoutY="103.0" prefHeight="585.0" prefWidth="688.0">
+        <columns>
+          <TableColumn fx:id="UsernameCol" prefWidth="195.0" text="Username" />
+            <TableColumn fx:id="CLKinCol" prefWidth="183.0" text="Clock - in Time" />
+            <TableColumn fx:id="CLKoutCol" prefWidth="180.0" text="Clock - out Time" />
+            <TableColumn fx:id="StateCol" prefWidth="139.0" text="State" />
+        </columns>
+      </TableView>
+      <Button fx:id="Loginbtn" layoutX="376.0" layoutY="713.0" mnemonicParsing="false" onAction="#ClickLogIn" prefHeight="44.0" prefWidth="109.0" text="Log in" />
+      <Label fx:id="Date" layoutX="505.0" layoutY="43.0" prefHeight="31.0" prefWidth="126.0" text="Label" />
+      <Label fx:id="Time" layoutX="658.0" layoutY="43.0" prefHeight="31.0" prefWidth="126.0" text="Label" />
+   </children>
+</Pane>

@@ -4,6 +4,7 @@ package hr.system;
 public class Staff extends Fulltime {
     private String department;
     public int id;
+    
 
     public String getDepartment() {
         return department;
@@ -12,7 +13,15 @@ public class Staff extends Fulltime {
     public void setDepartment(String department) {
         this.department = department;
     }
+     @Override
+    public String getUsername() {
+        return this.username;
+    }
 
+   @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
     @Override
     public String getName() {
         return this.name;
@@ -71,5 +80,14 @@ public class Staff extends Fulltime {
     @Override
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+    @Override
+    public int getID() {
+        return this.id;
+    }
+
+    @Override
+    public void setID(int id) {
+        this.id = id;
     }
 }

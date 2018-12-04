@@ -147,16 +147,18 @@ public class ManageScheduleController extends ClockinUiManagerController impleme
     @FXML
     private void ClicktoSubmit(ActionEvent event) throws ClassNotFoundException, SQLException {
         ////set to class session
-         Session session = new Session();
+         System.out.print("nnn");
+         
          ManageSchedule m = new ManageSchedule();
-         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
-         String date1 = dtf.format(DateField.getValue());
         
+         
          /////เก็บข้อมูลในตารางเป็น Arraylist
          List <List<String>> arrList = new ArrayList<>();
          System.out.print("\n");
+        
          for(int i=0;i<TableSch.getItems().size();i++)
          {
+             System.out.println("nnn");
              m = TableSch.getItems().get(i);
              arrList.add(new ArrayList<>());
              arrList.get(i).add(""+m.getUsername());
@@ -166,16 +168,19 @@ public class ManageScheduleController extends ClockinUiManagerController impleme
          }
          ////////set ข้อมูลเข้าดาต้าเบส วนทีละแถวของตาราง
          for(int i=0;i < arrList.size();i++){
-                
-                 session.setUsername(arrList.get(i).get(0)); //// username
-                 session.setDate(arrList.get(i).get(1));     //// date
-                 session.setCLKin(arrList.get(i).get(2));     //// clockintime
-                 session.setCLKout(arrList.get(i).get(3));   //// clockouttime
-                 /////(SQLmapper)
-                 Session sess = setSession(arrList.get(i).get(0),arrList.get(i).get(1),arrList.get(i).get(2),arrList.get(i).get(3));
+                 ////set everything in session ///username             ///date             //clocjin            //clockout
+                 Session session = new Session(arrList.get(i).get(0),arrList.get(i).get(1),arrList.get(i).get(2),arrList.get(i).get(3));
+                 //session.setUsername(arrList.get(i).get(0)); //// username
+                 //session.setDate(arrList.get(i).get(1));     //// date
+                 //session.setCLKin(arrList.get(i).get(2));     //// clockintime
+                 //session.setCLKout(arrList.get(i).get(3));   //// clockouttime
+                 
+
+                /////(SQLmapper)
+                 setSession(arrList.get(i).get(0),arrList.get(i).get(1),arrList.get(i).get(2),arrList.get(i).get(3));
                  
             }
-         
+          JOptionPane.showMessageDialog(null,"Sucsessfull");
          
          
        
@@ -206,7 +211,7 @@ public class ManageScheduleController extends ClockinUiManagerController impleme
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
         String date1 = dtf.format(DateField.getValue());
         ManageSchedule newData = new ManageSchedule(idchoice.getValue(),date1,CLKinHour.getText(),CLKinSec.getText(),CLKoutHour.getText(),CLKoutSec.getText());
-        System.out.print(idchoice.getValue());
+        //System.out.print(idchoice.getValue());
         TableSch.getItems().add(newData);
         
 }
@@ -235,7 +240,7 @@ public class ManageScheduleController extends ClockinUiManagerController impleme
     void SelectDate(ActionEvent event) {
     
         String formattedDate = DateField.getValue().toString();
-        System.out.print(formattedDate);
+        //System.out.print(formattedDate);
      
      }
 

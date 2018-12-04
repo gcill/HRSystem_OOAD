@@ -18,6 +18,13 @@ public class Session {
     private String CLKin;
     private String CLKout;
 
+    Session() {
+         
+    }
+
+    
+   
+
     public String getUsername() {
         return this.Username;
     }
@@ -50,5 +57,10 @@ public class Session {
     {
         this.CLKout= CLKout;
     }
-   
+    Session(String Username,String Date, String CLKin, String CLKout) {
+         this.Username = Username;
+         this.Date= Date;
+         this.CLKin= CLKin;
+         this.CLKout= CLKout;
+    }
 }
